@@ -20,12 +20,44 @@ body {
     display: flex;
     justify-content: center;
     padding: 35px 24px;
+    flex-direction: column;
+    gap: 45px;
 }
 
 #display-box {
     background-color: #65AE5B;
-    flex-grow: 1;
-    height: 120px;
     border-radius: 4px;
     box-shadow: inset 0px 0px 5px 2px #232e21;
+    height: 120px;
+}
+
+#buttons {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.button {
+    width: 70px;
+    border-radius: 11px;
+    box-shadow: 0px 2px 0px 1px gray;
+}
+
+.zero {
+    width: 155px;
+}
+
+.number {
+    background-color: #51493D;
+}
+
+.red {
+    background-color: #883A30;
+}
+
+.operator {
+    background-color: #F5B841;
 }
