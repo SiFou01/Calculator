@@ -13,8 +13,19 @@ body {
 
 #main {
     background-color: #161412;
-    width: 350px;
-    height: 550px;
-    border-radius: 8px;
+    width: 340px;
+    height: 510px;
+    border-radius: 15px;
     box-shadow: 0px 0px 3px 3px;
+    display: flex;
+    justify-content: center;
+    padding: 35px 24px;
+}
+
+#display-box {
+    background-color: #65AE5B;
+    flex-grow: 1;
+    height: 120px;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 5px 2px #232e21;
 }
