@@ -44,6 +44,17 @@ body {
     width: 70px;
     border-radius: 11px;
     box-shadow: 0px 2px 0px 1px gray;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Orbitron';
+    font-weight: 900;
+}
+
+.button:active {
+    box-shadow: none;
 }
 
 .zero {
@@ -60,4 +71,9 @@ body {
 
 .operator {
     background-color: #F5B841;
+    font-size: 23px;
+}
+
+#equals {
+    margin-right: 0.5px;
 }
