@@ -73,6 +73,7 @@ function equate() {
             value.splice(index - 1, 3,ans);
         }
     }
+    finalResult.textContent = ans;
 }
 
 function write(a) {
