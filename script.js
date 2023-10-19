@@ -31,9 +31,32 @@ let btnAdd = document.getElementById("o+");
 btnAdd.addEventListener("click", function(){makeOperator("+")})
 
 let operator = "";
-
+let value = "";
 function makeOperator(op) {
+    if (!(str == "") && !(value == "")) {
+        two()
+    }
+    else {
+        value = +str;
+    }
+    str = "";
     operator = "";
     operator = op;
+}
+
+let btnEquals = document.getElementById("equals");
+
+btnEquals.addEventListener("click", function(){equate()})
+
+let result = "";
+
+function equate() {
+    if (operator == "+") {
+       result = value + +str;
+    }
+}
+
+function two() {
+    value = value + +str;
 }
 
