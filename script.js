@@ -1,9 +1,5 @@
-let currentValue = "";
-let result = "";
-let previousValue = "";
-let operator = "";
-let operation = "";
-let click = 0;
+let value = "";
+let ans = 0;
 
 let finalResult = document.getElementById("result");
 let display = document.getElementById("display");
@@ -33,53 +29,21 @@ btn7.addEventListener("click", function(){makeValue("7"); write("7")});
 btn8.addEventListener("click", function(){makeValue("8"); write("8")});
 btn9.addEventListener("click", function(){makeValue("9"); write("9")});
 
-btnAdd.addEventListener("click", function(){makeOperator(" + "); write(" + ")});
+btnAdd.addEventListener("click", function(){makeValue(" + ")});
 btnEquals.addEventListener("click", function(){equate()});
 
 function makeValue(n) {
-    currentValue += n;
-}
-
-function write(ex) {
-    if  (operation.length < 19) {
-        operation += ex;
-        if (click == 1 && ex == operator) {
-            operation = `Ans ${operator}`
-            click--;
-        }
-        else if (click == 1) {
-            operation = ex;
-            previousValue = "";
-            currentValue = "";
-            result = "";
-            click--;
-        }
-        display.textContent = operation;
-    }
-}
-
-function makeOperator(op) {
-    if (!(currentValue == "") && !(previousValue == "")) {
-        calculate(op)
-    }
-    else {
-        previousValue = +currentValue;
-    }
-    currentValue = "";
-    operator = "";
-    operator = op;
+    value += n;
 }
 
 function equate() {
-    if (operator == " + ") {
-       result = previousValue + +currentValue;
+    value = value.split(" ");
+    if (value.includes("+")) {
+        index = value.indexOf("+");
+        ans = +value[index - 1] + +value[index + 1];
     }
-    finalResult.textContent = result;
-    click++;
 }
 
-function calculate(op) {
-    if (op == " + ") {
-        previousValue = previousValue + +currentValue;
-    }
+function write(a) {
+    let b = a;
 }
