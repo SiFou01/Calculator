@@ -46,25 +46,32 @@ function makeValue(n) {
 
 function equate() {
     value = value.split(" ");
-    if (value.includes("÷")) {
-        index = value.indexOf("÷");
-        ans = +value[index - 1] / +value[index + 1];
-    }
-    else if (value.includes("×")) {
-        index = value.indexOf("×");
-        ans = +value[index - 1] * +value[index + 1];
-    }
-    else if (value.includes("%")) {
-        index = value.indexOf("%");
-        ans = +value[index - 1] % +value[index + 1];
-    }
-    else if (value.includes("+")) {
-        index = value.indexOf("+");
-        ans = +value[index - 1] + +value[index + 1];
-    }
-    else if (value.includes("-")) {
-        index = value.indexOf("-");
-        ans = +value[index - 1] - +value[index + 1];
+    for (let i = 0 ;i < value.length; i++) {
+        if (value.includes("÷")) {
+            index = value.indexOf("÷");
+            ans = +value[index - 1] / +value[index + 1];
+            value.splice(index - 1, 3,ans);
+        }
+        else if (value.includes("×")) {
+            index = value.indexOf("×");
+            ans = +value[index - 1] * +value[index + 1];
+            value.splice(index - 1, 3,ans);
+        }
+        else if (value.includes("%")) {
+            index = value.indexOf("%");
+            ans = +value[index - 1] % +value[index + 1];
+            value.splice(index - 1, 3,ans);
+        }
+        else if (value.includes("+")) {
+            index = value.indexOf("+");
+            ans = +value[index - 1] + +value[index + 1];
+            value.splice(index - 1, 3,ans);
+        }
+        else if (value.includes("-")) {
+            index = value.indexOf("-");
+            ans = +value[index - 1] - +value[index + 1];
+            value.splice(index - 1, 3,ans);
+        }
     }
 }
 
