@@ -90,7 +90,7 @@ body {
     font-size: 17px;
 }
 
-#write {
+#display {
     margin-left: 18px;
     font-size: 19px;
 }
@@ -101,7 +101,7 @@ body {
     }
   }
 
-#write::after {
+#display::after {
     width: 12px;
     height: 2px;
     content: "";
