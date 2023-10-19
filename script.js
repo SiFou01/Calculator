@@ -5,6 +5,10 @@ let finalResult = document.getElementById("result");
 let display = document.getElementById("display");
 
 let btnAdd = document.getElementById("addition");
+let btnSubtraction = document.getElementById("subtraction");
+let btnMultiplication = document.getElementById("multiplication");
+let btnDivision = document.getElementById("division");
+let btnModulus = document.getElementById("modulus");
 let btnEquals = document.getElementById("equals");
 
 let btn0 = document.getElementById("n0");
@@ -18,18 +22,22 @@ let btn7 = document.getElementById("n7");
 let btn8 = document.getElementById("n8");
 let btn9 = document.getElementById("n9");
 
-btn0.addEventListener("click", function(){makeValue("0"); write("0")});
-btn1.addEventListener("click", function(){makeValue("1"); write("1")});
-btn2.addEventListener("click", function(){makeValue("2"); write("2")});
-btn3.addEventListener("click", function(){makeValue("3"); write("3")});
-btn4.addEventListener("click", function(){makeValue("4"); write("4")});
-btn5.addEventListener("click", function(){makeValue("5"); write("5")});
-btn6.addEventListener("click", function(){makeValue("6"); write("6")});
-btn7.addEventListener("click", function(){makeValue("7"); write("7")});
-btn8.addEventListener("click", function(){makeValue("8"); write("8")});
-btn9.addEventListener("click", function(){makeValue("9"); write("9")});
+btn0.addEventListener("click", function(){makeValue("0");});
+btn1.addEventListener("click", function(){makeValue("1");});
+btn2.addEventListener("click", function(){makeValue("2");});
+btn3.addEventListener("click", function(){makeValue("3");});
+btn4.addEventListener("click", function(){makeValue("4");});
+btn5.addEventListener("click", function(){makeValue("5");});
+btn6.addEventListener("click", function(){makeValue("6");});
+btn7.addEventListener("click", function(){makeValue("7");});
+btn8.addEventListener("click", function(){makeValue("8");});
+btn9.addEventListener("click", function(){makeValue("9");});
 
 btnAdd.addEventListener("click", function(){makeValue(" + ")});
+btnSubtraction.addEventListener("click", function(){makeValue(" - ")});
+btnMultiplication.addEventListener("click", function(){makeValue(" × ")});
+btnDivision.addEventListener("click", function(){makeValue(" ÷ ")});
+btnModulus.addEventListener("click", function(){makeValue(" % ")});
 btnEquals.addEventListener("click", function(){equate()});
 
 function makeValue(n) {
@@ -38,9 +46,25 @@ function makeValue(n) {
 
 function equate() {
     value = value.split(" ");
-    if (value.includes("+")) {
+    if (value.includes("÷")) {
+        index = value.indexOf("÷");
+        ans = +value[index - 1] / +value[index + 1];
+    }
+    else if (value.includes("×")) {
+        index = value.indexOf("×");
+        ans = +value[index - 1] * +value[index + 1];
+    }
+    else if (value.includes("%")) {
+        index = value.indexOf("%");
+        ans = +value[index - 1] % +value[index + 1];
+    }
+    else if (value.includes("+")) {
         index = value.indexOf("+");
         ans = +value[index - 1] + +value[index + 1];
+    }
+    else if (value.includes("-")) {
+        index = value.indexOf("-");
+        ans = +value[index - 1] - +value[index + 1];
     }
 }
 
