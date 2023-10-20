@@ -44,12 +44,20 @@ btnModulus.addEventListener("click", function(){makeValue(" % ")});
 btnEquals.addEventListener("click", function(){equate()});
 
 function makeValue(n) {
+    if (typeof value == "object" && !(isNaN(+n))) {
+        value = "";
+    }
     value += n;
+    display.textContent = value;
 }
 
 // this function checks the operator and replaces in the array the operation made with the answer.
 
 function equate() {
+    if (!(value.includes(" "))) {
+        finalResult.textContent = value;
+        return;
+    }
     value = value.split(" ");
     for (let i = 1 ;i < value.length;) {
         if (value.includes("÷") || value.includes("×") || value.includes("%")) {
