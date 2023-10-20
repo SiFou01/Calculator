@@ -23,6 +23,8 @@ let btn8 = document.getElementById("n8");
 let btn9 = document.getElementById("n9");
 let btnDot = document.getElementById("dot");
 
+let btnAC = document.getElementById("ac");
+
 btn0.addEventListener("click", function(){makeValue("0");});
 btn1.addEventListener("click", function(){makeValue("1");});
 btn2.addEventListener("click", function(){makeValue("2");});
@@ -42,6 +44,8 @@ btnMultiplication.addEventListener("click", function(){makeValue(" × ")});
 btnDivision.addEventListener("click", function(){makeValue(" ÷ ")});
 btnModulus.addEventListener("click", function(){makeValue(" % ")});
 btnEquals.addEventListener("click", function(){equate()});
+
+btnAC.addEventListener("click", function(){reset()});
 
 function makeValue(n) {
     if (typeof value == "object" && !(isNaN(+n))) {
@@ -90,5 +94,12 @@ function equate() {
             }
         }
     }
+    finalResult.textContent = ans;
+}
+
+function reset() {
+    value = "";
+    display.textContent = value;
+    ans = 0;
     finalResult.textContent = ans;
 }
