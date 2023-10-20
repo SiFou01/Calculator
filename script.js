@@ -44,38 +44,40 @@ function makeValue(n) {
     value += n;
 }
 
+// this function checks the operator and replaces in the array the operation made with the answer.
+
 function equate() {
     value = value.split(" ");
-    for (let i = 0 ;i < value.length; i++) {
-        if (value.includes("÷")) {
-            index = value.indexOf("÷");
-            ans = +value[index - 1] / +value[index + 1];
-            value.splice(index - 1, 3,ans);
+    for (let i = 1 ;i < value.length;) {
+        if (value.includes("÷") || value.includes("×") || value.includes("%")) {
+            indexDiv = value.indexOf("÷");
+            indexMul = value.indexOf("×");
+            indexMod = value.indexOf("%");
+            if ((indexDiv < indexMul || indexMul == -1) && (indexDiv < indexMod || indexMod == -1) && indexDiv !== -1) {
+                ans = +value[indexDiv - 1] / +value[indexDiv + 1];
+                value.splice(indexDiv - 1, 3,ans);
+            }
+            else if ((indexMul < indexDiv || indexDiv == -1) && (indexMul < indexMod || indexMod == -1) && indexMul !== -1) {
+                ans = +value[indexMul - 1] * +value[indexMul + 1];
+                value.splice(indexMul - 1, 3,ans);
+            }
+            else if ((indexMod < indexDiv || indexDiv == -1) && (indexMod < indexMul || indexMul == -1) && indexMod !== -1) {
+                ans = +value[indexMod - 1] % +value[indexMod + 1];
+                value.splice(indexMod - 1, 3,ans);
+            }
         }
-        else if (value.includes("×")) {
-            index = value.indexOf("×");
-            ans = +value[index - 1] * +value[index + 1];
-            value.splice(index - 1, 3,ans);
-        }
-        else if (value.includes("%")) {
-            index = value.indexOf("%");
-            ans = +value[index - 1] % +value[index + 1];
-            value.splice(index - 1, 3,ans);
-        }
-        else if (value.includes("+")) {
-            index = value.indexOf("+");
-            ans = +value[index - 1] + +value[index + 1];
-            value.splice(index - 1, 3,ans);
-        }
-        else if (value.includes("-")) {
-            index = value.indexOf("-");
-            ans = +value[index - 1] - +value[index + 1];
-            value.splice(index - 1, 3,ans);
+        else if (value.includes("+") || value.includes("-")) {
+            indexAdd = value.indexOf("+");
+            indexSub = value.indexOf("-");
+            if ((indexAdd < indexSub || indexSub == -1) && indexAdd !== -1) {
+                ans = +value[indexAdd - 1] + +value[indexAdd + 1];
+                value.splice(indexAdd - 1, 3,ans);
+            }
+            else if ((indexSub < indexAdd || indexAdd == -1) && indexSub !== -1) {
+                ans = +value[indexSub - 1] - +value[indexSub + 1];
+                value.splice(indexSub - 1, 3,ans);
+            }
         }
     }
     finalResult.textContent = ans;
-}
-
-function write(a) {
-    let b = a;
 }
