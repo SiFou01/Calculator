@@ -21,6 +21,7 @@ let btn6 = document.getElementById("n6");
 let btn7 = document.getElementById("n7");
 let btn8 = document.getElementById("n8");
 let btn9 = document.getElementById("n9");
+let btnDot = document.getElementById("dot");
 
 btn0.addEventListener("click", function(){makeValue("0");});
 btn1.addEventListener("click", function(){makeValue("1");});
@@ -32,6 +33,8 @@ btn6.addEventListener("click", function(){makeValue("6");});
 btn7.addEventListener("click", function(){makeValue("7");});
 btn8.addEventListener("click", function(){makeValue("8");});
 btn9.addEventListener("click", function(){makeValue("9");});
+
+btnDot.addEventListener("click", function(){makeValue(".");})
 
 btnAdd.addEventListener("click", function(){makeValue(" + ")});
 btnSubtraction.addEventListener("click", function(){makeValue(" - ")});
