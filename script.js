@@ -1,5 +1,6 @@
 let value = "";
 let ans = 0;
+let displayed = "";
 
 let finalResult = document.getElementById("result");
 let display = document.getElementById("display");
@@ -24,6 +25,7 @@ let btn9 = document.getElementById("n9");
 let btnDot = document.getElementById("dot");
 
 let btnAC = document.getElementById("ac");
+let btnDel = document.getElementById("del");
 
 btn0.addEventListener("click", function(){makeValue("0");});
 btn1.addEventListener("click", function(){makeValue("1");});
@@ -46,20 +48,22 @@ btnModulus.addEventListener("click", function(){makeValue(" % ")});
 btnEquals.addEventListener("click", function(){equate()});
 
 btnAC.addEventListener("click", function(){reset()});
+btnDel.addEventListener("click", function(){delete_()});
 
 function makeValue(n) {
     if (typeof value == "object" && !(isNaN(+n))) {
         value = "";
     }
     value += n;
-    display.textContent = value;
+    displayed = value;
+    display.textContent = displayed;
 }
 
 // this function checks the operator and replaces in the array the operation made with the answer.
 
 function equate() {
     if (!(value.includes(" "))) {
-        finalResult.textContent = value;
+        finalResult.textContent = displayed;
         return;
     }
     value = value.split(" ");
@@ -99,7 +103,27 @@ function equate() {
 
 function reset() {
     value = "";
-    display.textContent = value;
+    displayed = "";
+    display.textContent = displayed;
     ans = 0;
     finalResult.textContent = ans;
+}
+
+function delete_() {
+    displayed = displayed.split(" ");
+    if (displayed[displayed.length - 1].length > 1) {
+        last = displayed[displayed.length - 1];
+        displayed.pop();
+        last = last.split("");
+        last.pop();
+        last = last.join("");
+        displayed.push(last);
+        
+    }
+    else {
+        displayed.pop();
+    }
+    displayed = displayed.join(" ");
+    value = displayed;
+    display.textContent = displayed;
 }
