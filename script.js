@@ -81,6 +81,10 @@ function makeValue(n) {
 
 function equate() {
     Err = 0;
+    if (value == "" && displayed == "") {
+        finalResult.textContent = 0;
+        return;
+    }
     if (!(value.includes(" ")) && !(displayed.includes(" "))) {
         finalResult.textContent = displayed;
         return;
