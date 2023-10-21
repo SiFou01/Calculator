@@ -1,6 +1,7 @@
 let value = "";
 let ans = 0;
 let displayed = "";
+let Err = 0;
 
 let finalResult = document.getElementById("result");
 let display = document.getElementById("display");
@@ -62,11 +63,13 @@ function makeValue(n) {
 // this function checks the operator and replaces in the array the operation made with the answer.
 
 function equate() {
-    if (!(value.includes(" "))) {
+    Err = 0;
+    if (!(value.includes(" ")) && !(displayed.includes(" "))) {
         finalResult.textContent = displayed;
         return;
     }
     value = value.split(" ");
+    check(value);
     for (let i = 1 ;i < value.length;) {
         if (value.includes("÷") || value.includes("×") || value.includes("%")) {
             indexDiv = value.indexOf("÷");
@@ -99,6 +102,10 @@ function equate() {
         }
     }
     finalResult.textContent = ans;
+    if (ans == Infinity || Err == 1) {
+        finalResult.textContent = "ERROR";
+        value = "";
+    }
 }
 
 function reset() {
@@ -118,12 +125,33 @@ function delete_() {
         last.pop();
         last = last.join("");
         displayed.push(last);
-        
     }
+    else if (displayed[displayed.length - 1] == "") {
+        displayed.pop();
+        displayed.pop();
+    }          
     else {
         displayed.pop();
     }
-    displayed = displayed.join(" ");
+    if (displayed[displayed.length - 1] == "+" 
+            || displayed[displayed.length - 1] == "-" || displayed[displayed.length - 1] == "%" 
+            || displayed[displayed.length - 1] == "×" || displayed[displayed.length - 1] == "÷") {
+        displayed = displayed.join(" ");
+        displayed = displayed.padEnd(displayed.length + 1," ");
+    }
+    else {
+        displayed = displayed.join(" ");
+    }
     value = displayed;
     display.textContent = displayed;
+}
+
+// this function checks if a number has more than one dot.
+
+function check(value) {
+    for (const item of value) {
+        if (item.includes(".") && (item.indexOf(".") !== item.lastIndexOf("."))) {
+            Err = 1;
+        }
+    }
 }
