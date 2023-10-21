@@ -5,7 +5,7 @@ html {
 body {
     height: 100%;
     margin: 0;
-    background-color: #877A6E;
+    background-color: #433E37;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ body {
     width: 340px;
     height: 510px;
     border-radius: 15px;
-    box-shadow: 0px 0px 3px 3px;
+    box-shadow: 0px 0px 3px 4px;
     display: flex;
     justify-content: center;
     padding: 35px 24px;
@@ -48,7 +48,7 @@ body {
 .button {
     width: 70px;
     border-radius: 11px;
-    box-shadow: 0px 2px 0px 1px gray;
+    box-shadow: 0px 2px 0px 1px #3c3535;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -72,10 +72,12 @@ body {
 
 .red {
     background-color: #883A30;
+    box-shadow: 0px 2px 0px 1px #762424;
 }
 
 .operator {
     background-color: #D5920B;
+    box-shadow: 0px 2px 0px 1px #8c6d13;
     font-size: 23px;
 }
 
@@ -108,4 +110,18 @@ body {
     display: inline-block;
     background: black;
     animation: cursor-blink 2s steps(2) infinite;
+}
+
+h3 {
+    position: absolute;
+    margin-left: 1150px;
+    margin-top: 600px;
+    font-family: "Merienda", cursive, sans-serif;
+    font-size: 20px;
+    color: #0B0A09;
+}
+
+a {
+    text-decoration: none;
+    color: #65AE5B;
 }
