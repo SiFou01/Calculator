@@ -54,6 +54,23 @@ btnDel.addEventListener("click", function(){delete_()});
 function makeValue(n) {
     if (typeof value == "object" && !(isNaN(+n))) {
         value = "";
+        displayed = value;
+    }
+    if (typeof value == "object" && isNaN(+n)) {
+        value += n;
+        displayed = `Ans`;
+        displayed += n;
+        display.textContent = displayed;
+        return;
+    }
+    if (displayed.includes("Ans")) {
+        value += n;
+        displayed += n;
+        display.textContent = displayed;
+        return;
+    }
+    if (displayed.length > 18) {
+        return;
     }
     value += n;
     displayed = value;
@@ -102,9 +119,10 @@ function equate() {
         }
     }
     finalResult.textContent = ans;
-    if (ans == Infinity || Err == 1) {
+    if (ans == Infinity || Err == 1 || isNaN(ans)) {
         finalResult.textContent = "ERROR";
         value = "";
+        displayed = "";
     }
 }
 
@@ -118,7 +136,10 @@ function reset() {
 
 function delete_() {
     displayed = displayed.split(" ");
-    if (displayed[displayed.length - 1].length > 1) {
+    if (displayed[displayed.length - 1] == "Ans") {
+        displayed.pop();
+    }
+    else if (displayed[displayed.length - 1].length > 1) {
         last = displayed[displayed.length - 1];
         displayed.pop();
         last = last.split("");
