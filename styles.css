@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "DIGITAL";
+    src: url("./fonts/DIGITALDREAM.ttf") format("truetype");
+}
+
 html {
     height: 100%;
 }
@@ -29,7 +34,7 @@ body {
     border-radius: 4px;
     box-shadow: inset 0px 0px 5px 2px #232e21;
     height: 120px;
-    font-family: "Orbitron";
+    font-family: "DIGITAL";
     display: flex;
     flex-direction: column;
     gap: 25px;
